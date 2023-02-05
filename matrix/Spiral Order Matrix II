@@ -1,0 +1,31 @@
+vector<vector<int> > Solution::generateMatrix(int A) {
+    vector<vector<int>> R(A,vector<int>(A,0));
+    int r1 = 0, r2 = A-1, c1 = 0, c2 = A-1;
+    int val = 1;
+    while(r1<=r2 && c1<=c2){
+        // left to right
+        for(int c=c1;c<=c2;c++){
+            R[r1][c] = val++;
+        }
+        // up to down
+        for (int r = r1+1 ; r<=r2 ; r++){
+            R[r][c2]=val++;
+        }
+        
+        if(r1<r2 && c1<c2)
+        {
+            // bottom right to left
+            for(int c = c2-1 ; c>c1 ; c--){
+                R[r2][c] = val++;
+            }
+            //down to up 
+            for(int r=r2;r>r1;r--)
+            {
+                R[r][c1] = val++;
+            }
+        }
+        r1++;r2--;c1++;c2--;
+
+    }
+    return R;
+}
