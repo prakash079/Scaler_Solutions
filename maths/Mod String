@@ -1,0 +1,16 @@
+int Solution::findMod(string A, int B) {
+    long n=A.length();
+    long val=0;
+    long exp = 1;
+    if(n<=2)
+    {
+        return stoi(A)%B;
+    }
+    for(long i=n-1;i>=0;i--)
+    {
+        val =(val+(A[i]-'0')*exp)%B;
+        exp = (exp*10)%B;
+        //val = val%B;
+    }
+    return val;
+}
