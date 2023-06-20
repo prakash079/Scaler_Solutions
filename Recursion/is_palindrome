@@ -1,0 +1,20 @@
+bool is_pal(string &A, int l, int r)
+{
+    if(l>=r)
+    {
+        return true;
+    }
+    return (A[l] == A[r]) && is_pal(A, l+1, r-1);
+}
+
+int Solution::solve(string A) {
+    int N = A.size();
+    if(is_pal(A,0,N-1))
+    {
+        return 1;
+    }
+    return 0;
+}
+
+
+
