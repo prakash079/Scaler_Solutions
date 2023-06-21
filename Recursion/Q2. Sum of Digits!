@@ -1,0 +1,12 @@
+int sod(int A)
+{
+    if(A==0)
+    {
+        return 0;
+    }
+    return sod(A/10)+A%10;
+}
+
+int Solution::solve(int A) {
+    return sod(A);
+}
