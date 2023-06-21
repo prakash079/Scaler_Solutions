@@ -1,0 +1,12 @@
+int fibo(int A){
+    if(A<=1)
+    {
+        return A;
+    }
+    return fibo(A-1)+fibo(A-2);
+}
+
+
+int Solution::findAthFibonacci(int A) {
+    return fibo(A);
+}
