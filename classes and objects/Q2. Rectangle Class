@@ -1,0 +1,41 @@
+class Rectangle {
+	int l,b;
+	public :
+		Rectangle() {
+			this->l = 0;
+			this->b = 0;
+		}
+		Rectangle(int x,int y) {
+			this->l = x;
+			this->b = y;
+		}
+		
+		int area(){
+			return (this-> l * this->b);
+		}
+
+		bool isSquare(){
+			return this->l == this->b;
+		}
+
+		bool areaGreaterK(int k){
+			int area = this->area();
+			return area > k;
+		}
+};
+
+vector<int> Solution::solve(vector<int> &A, vector<int> &B) {
+	int n = A.size();
+	vector<int> ans(n, 0);
+	Rectangle rect[n];
+	for(int i = 0 ; i < n ; i++){
+		rect[i] = Rectangle(A[i], B[i]);
+		int cur_area = rect[i].area();
+		for(int j = 0 ; j < i ; j++){
+			if(rect[j].isSquare() && rect[j].areaGreaterK(cur_area)){
+				ans[i]++;
+			}
+		}
+	}
+	return ans;
+}
