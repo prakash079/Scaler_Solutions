@@ -1,0 +1,17 @@
+vector<int> Solution::solve(int A, vector<vector<int> > &B) {
+    vector<int> v(A,0);//Creating Array of A length with 0 in each index
+    for(int i=1;i<=B.size();i++)
+    {
+        v[B[i-1][0]-1]=v[B[i-1][0]-1]+B[i-1][2];
+        if(B[i-1][1]-1<A)
+        {
+            v[B[i-1][1]]=v[B[i-1][1]]-B[i-1][2];
+        }
+    }
+   
+    for(int i=1;i<=A;i++)
+    {
+        v[i]=v[i-1]+v[i];
+    }
+    return v;
+}
