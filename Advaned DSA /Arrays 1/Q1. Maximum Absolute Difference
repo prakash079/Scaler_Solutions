@@ -1,0 +1,15 @@
+int Solution::maxArr(vector<int> &A) {
+    // Kadane's algorithm
+    int Xmax=INT_MIN;
+    int Xmin=INT_MAX;
+    int Ymax=INT_MIN;
+    int Ymin=INT_MAX;
+
+    for(int i=0; i<A.size(); i++) {
+        Xmax=max(Xmax, A[i]+i);
+        Xmin=min(Xmin, A[i]+i);
+        Ymax=max(Ymax, A[i]-i);
+        Ymin=min(Ymin, A[i]-i);
+    }
+    return max(Xmax-Xmin, Ymax-Ymin);
+}
